@@ -28,6 +28,7 @@ class OrderFactory extends Factory
             'total' => $price * $quantity,
             'type' => $this->faker->randomElement(['Zwykłe', 'Hybrydowe', 'Zaokraglnae', 'Cale', 'Najtańsze']),
             'brand' => $this->faker->randomElement(['Samsung', 'LG', 'Xiaomi', 'Lenovo', 'Huawei','One Plus', 'Nokia']),
+            'model' => $this->faker->asciify('**') . '-' . $this->faker->unique()->numberBetween(1000,9999),
         ];
     }
 }
