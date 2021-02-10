@@ -26,9 +26,9 @@ class OrderFactory extends Factory
             'client_id' => $this->faker->biasedNumberBetween(1,25),
             'price' => $price = $this->faker->numberBetween(0, 55),
             'total' => $price * $quantity,
-            'type' => $this->faker->randomElement(['Zwykłe', 'Hybrydowe', 'Zaokraglnae', 'Cale', 'Najtańsze']),
+            'type' => $this->faker->randomElement(['Zwykłe', 'Hybrydowe', 'Zaokraglne', 'Całe', 'Najtańsze']),
             'brand' => $this->faker->randomElement(['Samsung', 'LG', 'Xiaomi', 'Lenovo', 'Huawei','One Plus', 'Nokia']),
-            'model' => $this->faker->asciify('**') . '-' . $this->faker->unique()->numberBetween(1000,9999),
+            'model' => $this->faker->lexify('??') . '-' . $this->faker->unique()->numberBetween(1000,9999),
         ];
     }
 }
