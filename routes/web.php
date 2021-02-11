@@ -19,7 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::post('order/create', [App\Http\Controllers\Order\RegisterOrderController::class, 'register'])->name('order.create');
-Route::get('order/success', [App\Http\Controllers\Order\RegisterOrderController::class, 'success']);//
+Route::get('order/myOrders', [App\Http\Controllers\orderController::class, 'myOrders'])->name('order.getMyOrders');
+Route::get('order/success', [App\Http\Controllers\Order\RegisterOrderController::class, 'success']);
 Route::get('order', [\App\Http\Controllers\orderController::class, 'index'])->middleware('auth')->name('order');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('users', \App\Http\Controllers\userController::class);

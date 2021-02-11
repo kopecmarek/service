@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Ramsey\Collection\Collection;
 
 class orderController extends Controller
 {
@@ -24,8 +26,30 @@ class orderController extends Controller
      */
     public function create()
     {
-        //Route::post('order', 'Order\RegisterController@register');
-        echo("Sukces");
+
+    }
+    /**
+     * Return collection where the user can lead his orders.
+     *
+     * @return Order[]|\Illuminate\Database\Eloquent\Collection|Collection
+     */
+    public function getUserOrders()
+    {
+        $userID = Auth::id();
+        return Order::all()->where('client_id', $userID);
+    }
+    public function getOrdersToAccept()
+    {
+        return Order::all()->whereNotNull(['price', 'total']);
+    }
+    public function getAllOrders()
+    {
+        return Order::paginate(15);
+    }
+
+    public function myOrders()
+    {
+        return view('orders.myOrder',['orders' => $this->getUserOrders()]);
     }
 
     public function register(Request $request)
