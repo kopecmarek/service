@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <h3 class="text-center">{{__('Your Orders')}}</h3>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -31,7 +32,7 @@
                     <td>@if(!$order->price and !$order->total) In progress @else Confirmed @endif</td>
                     <td class="text-center">@if(!$order->price and !$order->total)
                         <a class="btn btn-warning" href="{{$order->id}}/edit">Edit</a>
-                            <form style="display: inline" action="{{route('order')}}" method="POST">@method('DELETE')<input type="submit" value="Delete" class="btn btn-danger"></form>
+                            <form style="display: inline" action="{{route('order')}}/{{$order->id}}" method="POST">@csrf @method('DELETE')<input type="submit" onclick="return confirm('Are you sure?')" value="Delete" class="btn btn-danger"></form>
                         @else <button class="btn btn-success" disabled>Finished</button> @endif</td>
                 </tr>
             @endforeach

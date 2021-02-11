@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Void_;
 use Ramsey\Collection\Collection;
 
 class orderController extends Controller
@@ -50,12 +51,6 @@ class orderController extends Controller
     public function myOrders()
     {
         return view('orders.myOrder',['orders' => $this->getUserOrders()]);
-    }
-
-    public function register(Request $request)
-    {
-
-        return ': '.  Auth::id();
     }
 
     /**
@@ -106,11 +101,14 @@ class orderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|void
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        Order::destroy($request->id);
+        return view('orders.informationOrder',['operation' => 'order delete' ,
+            'message' => 'Your order has been successfully deleted'
+        ]);
     }
 }

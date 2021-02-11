@@ -29,7 +29,9 @@ class RegisterOrderController extends Controller
     }
 
     public function success(){
-        return view('orders.informationOrder',['success'=>1]);
+        return view('orders.informationOrder',['operation' => 'order' ,
+            'message' => 'Your order has been processed successfully. Wait for information about the progress of the order'
+            ]);
     }
     /**
      * Get the post register / login redirect path.

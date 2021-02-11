@@ -5,14 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    @if($success === 1)
-                    <div class="card-header">{{ __('Information') }}</div>
+                    @if($operation && $message)
+                    <div class="card-header">{{ __('Information ').$operation }}</div>
                     <div class="card-body">
                         <div class="alert alert-success" role="alert">
                             <h4 class="alert-heading">Well done!</h4>
-                            {{__('Your order has been processed successfully. Wait for information about the progress of the order')}}
+                            {{$message}}
                         </div>
-                        <a class="btn btn-primary" href="/order">{{_('Order another')}}</a>
+                        @if($operation == 'order')<a class="btn btn-primary" href="/order">{{_('Order another')}}</a>@endif
                         <a class="btn btn-primary" href="{{route('home')}}">{{_('Home')}}</a>
                     </div>
                     @endif
