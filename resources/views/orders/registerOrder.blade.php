@@ -49,6 +49,22 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Type glass') }}</label>
+
+                                    <div class="col-md-6">
+                                        <select id="type" name="type" class="form-control @error('type') is-invalid @enderror" required autocomplete="type">
+                                            <option value="{{__('Normal')}}">{{__('Normal')}}</option>
+                                            <option value="{{__('Hybrid')}}">{{__('Hybrid')}}</option>
+                                            <option value="{{__('Rounded')}}">{{__('Rounded')}}</option>
+                                        </select>
+                                        @error('type')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
@@ -56,7 +72,6 @@
                                         </button>
                                     </div>
                                 </div>
-                            </div>
                         </form>
                     </div>
                 </div>
