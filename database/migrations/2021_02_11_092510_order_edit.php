@@ -14,8 +14,8 @@ class OrderEdit extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->string('price')->nullable(); //admin can edit this filed
-            $table->string('total')->nullable(); //admin can edit this filed
+            $table->string('price')->nullable()->change(); //admin can edit this filed
+            $table->string('total')->nullable()->change(); //admin can edit this filed
         });
     }
 
@@ -27,8 +27,8 @@ class OrderEdit extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->string('price')->nullable(false); //admin can edit this filed
-            $table->string('total')->nullable(false); //admin can edit this filed
+            $table->string('price')->nullable(false)->change(); //admin can edit this filed
+            $table->string('total')->nullable(false)->change(); //admin can edit this filed
         });
     }
 }
