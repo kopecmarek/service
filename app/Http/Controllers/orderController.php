@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class orderController extends Controller
 {
@@ -13,7 +14,7 @@ class orderController extends Controller
      */
     public function index()
     {
-        return view('orders/registerOrder');
+        return view('orders.registerOrder');
     }
 
     /**
@@ -23,7 +24,14 @@ class orderController extends Controller
      */
     public function create()
     {
-        //
+        //Route::post('order', 'Order\RegisterController@register');
+        echo("Sukces");
+    }
+
+    public function register(Request $request)
+    {
+
+        return ': '.  Auth::id();
     }
 
     /**

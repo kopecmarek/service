@@ -14,7 +14,7 @@ class userController extends Controller
      */
     public function index()
     {
-        return view('users/showUsers',
+        return view('users.showUsers',
             ['users'=>User::paginate(10)]);
     }
 
