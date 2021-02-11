@@ -18,8 +18,8 @@ class OrderMigration extends Migration
             $table->timestamps();
             $table->smallInteger('quantity');
             $table->foreignId('client_id')->references('id')->on('users')->onDelete('cascade');
-            $table->decimal('price', 4, 2)->nullable(); //admin can change this value
-            $table->decimal('total', 8, 2)->nullable(); //admin can change this value
+            $table->decimal('price', 4, 2);
+            $table->decimal('total', 8, 2);
             $table->string('type', 30);
             $table->string('brand', 15);
             $table->string('model', 20);
