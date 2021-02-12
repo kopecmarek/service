@@ -17,7 +17,16 @@
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
-                    <td>Action</td>
+                    <td>
+                        @if($user->is_admin === null)
+                        <a class="btn btn-warning" href="{{$user->id}}/edit">Edit</a>
+                        <form style="display: inline" action="users/{{$user->id}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" onclick="return confirm('Are you sure?')" value="Delete" class="btn btn-danger">
+                        </form>
+                        @else <button class="btn btn-success" disabled>It's admin :)</button> @endif</td>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
