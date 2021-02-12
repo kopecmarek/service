@@ -61,7 +61,7 @@
                                     <a class="dropdown-item" href="{{route('home')}}">{{__('Dashboard')}}</a>
                                     <a class="dropdown-item" href="{{route('order')}}">{{__('Register order')}}</a>
                                     <a class="dropdown-item" href="{{route('order.getMyOrders')}}">{{__('My orders')}}</a>
-                                    <a class="dropdown-item" href="{{route('users.index')}}">{{__('Users')}}</a>
+                                    @if(Auth::user()->is_admin == 1)<a class="dropdown-item" href="{{route('users.index')}}">{{__('Users')}}</a>@endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
